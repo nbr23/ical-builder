@@ -3,10 +3,10 @@
 all: dist
 
 dist: node_modules
-	npm run build
+	pnpm build
 
-node_modules: package.json package-lock.json
-	npm install
+node_modules: package.json pnpm-lock.yaml
+	pnpm install
 
 clean:
 	rm -rf dist node_modules
