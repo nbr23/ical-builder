@@ -1,0 +1,219 @@
+@import 'leaflet/dist/leaflet.css';
+
+:root {
+  --bg: oklch(97.5% 0.007 80);
+  --bg-card: oklch(99.2% 0.003 80);
+  --text: oklch(20% 0.01 250);
+  --text-muted: oklch(50% 0.01 250);
+  --text-faint: oklch(70% 0.007 250);
+  --accent: oklch(52% 0.22 280);
+  --accent-hover: oklch(47% 0.22 280);
+  --accent-light: oklch(96% 0.03 280);
+  --accent-mid: oklch(87% 0.06 280);
+  --success: oklch(50% 0.17 150);
+  --success-light: oklch(96% 0.04 150);
+  --border: oklch(88% 0.012 80);
+  --shadow-sm: 0 1px 3px oklch(0% 0 0 / 0.05);
+  --shadow: 0 2px 14px oklch(0% 0 0 / 0.08);
+  --shadow-lg: 0 6px 28px oklch(0% 0 0 / 0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --mono: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --header-h: 58px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: var(--font);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+::selection {
+  background: var(--accent-mid);
+}
+
+.leaflet-container {
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+}
+.leaflet-pane {
+  z-index: 1 !important;
+}
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 2 !important;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.accordion-body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.accordion-body.open {
+  max-height: 2600px;
+}
+
+.field-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 7px;
+}
+.field-group {
+  margin-bottom: 16px;
+}
+
+.field-input {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--text);
+  background: white;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.field-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+.field-input::placeholder {
+  color: var(--text-faint);
+}
+textarea.field-input {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+select.field-input {
+  background-image: url("data:image/svg+xml,%3Csvg width='11' height='7' viewBox='0 0 11 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5.5 6L10 1' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 13px center;
+  padding-right: 34px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: var(--accent);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  letter-spacing: 0.01em;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px 4px 11px;
+  background: var(--accent-light);
+  color: var(--accent);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: var(--mono);
+}
+.chip-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--accent);
+  opacity: 0.65;
+  transition: opacity 0.15s;
+  padding: 0;
+}
+.chip-remove:hover {
+  opacity: 1;
+}
+
+.day-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  color: var(--text-muted);
+  transition: all 0.14s;
+}
+.day-check:hover:not(.checked) {
+  border-color: var(--accent-mid);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+.day-check.checked {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
