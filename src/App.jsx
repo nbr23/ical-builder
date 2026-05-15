@@ -11,6 +11,7 @@ import {
   BellIcon,
   CheckIcon,
   ChevronDownIcon,
+  GithubIcon,
 } from './components/icons.jsx';
 
 const SECTION_ORDER = ['about', 'dateTime', 'location', 'options'];
@@ -447,6 +448,32 @@ export default function App() {
           justifyContent: 'space-between',
         }}
       >
+        <a
+          href="https://github.com/nbr23/ical-builder"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Fork on GitHub"
+          style={{
+            position: 'absolute',
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 6,
+            color: 'var(--text-faint)',
+            textDecoration: 'none',
+            fontSize: 11,
+            fontWeight: 500,
+            letterSpacing: '0.02em',
+            transition: 'color 0.15s',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-faint)')}
+        >
+          <GithubIcon size={13} />
+          <span>Fork on GitHub</span>
+        </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
           <div
             style={{
