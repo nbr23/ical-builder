@@ -36,7 +36,7 @@ pipeline {
         stage('Sync github repos') {
             when { branch 'master' }
             steps {
-                syncRemoteBranch('git@github.com:nbr23/ical-builder.git', 'master')
+                ghSync()
             }
         }
     }
